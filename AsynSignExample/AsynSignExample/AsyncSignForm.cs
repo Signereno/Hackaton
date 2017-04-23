@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace AsynSignExample
 {
     public partial class AsyncSignForm : Form
     {
+
+        private Guid accountId = new Guid(ConfigurationManager.AppSettings["accountId"]);
+        private string apiKey = ConfigurationManager.AppSettings["apiKey"];
+        private string eventConnectionString = ConfigurationManager.AppSettings["eventConnectionString"];
+        private Guid documentid;
+        private string pdfFilePath;
+
         public AsyncSignForm()
         {
             InitializeComponent();
@@ -57,6 +58,9 @@ namespace AsynSignExample
             calender.Visible = chkSignDealine.Checked;
         }
 
-   
+        private void btnShowPDFbtnShowPDF_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(pdfFilePath);
+        }
     }
 }
