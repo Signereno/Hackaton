@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chkSignDealine = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lastName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,11 +48,10 @@
             this.title = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabStep2 = new System.Windows.Forms.TabPage();
-            this.btnShowPDFbtnShowPDF = new System.Windows.Forms.Button();
-            this.btnChangeDeadline = new System.Windows.Forms.Button();
-            this.btnCancelDocument = new System.Windows.Forms.Button();
             this.detailsLabel = new System.Windows.Forms.Label();
-            this.chkSignDealine = new System.Windows.Forms.CheckBox();
+            this.btnCancelDocument = new System.Windows.Forms.Button();
+            this.btnChangeDeadline = new System.Windows.Forms.Button();
+            this.btnShowPDF = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -89,6 +89,16 @@
             this.tabPage1.Text = "Step 1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // chkSignDealine
+            // 
+            this.chkSignDealine.AutoSize = true;
+            this.chkSignDealine.Location = new System.Drawing.Point(135, 118);
+            this.chkSignDealine.Name = "chkSignDealine";
+            this.chkSignDealine.Size = new System.Drawing.Size(15, 14);
+            this.chkSignDealine.TabIndex = 3;
+            this.chkSignDealine.UseVisualStyleBackColor = true;
+            this.chkSignDealine.CheckedChanged += new System.EventHandler(this.chkSignDealine_CheckedChanged);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lastName);
@@ -111,7 +121,7 @@
             this.lastName.Location = new System.Drawing.Point(123, 56);
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(449, 20);
-            this.lastName.TabIndex = 9;
+            this.lastName.TabIndex = 5;
             // 
             // label7
             // 
@@ -143,7 +153,7 @@
             this.mobile.Location = new System.Drawing.Point(123, 95);
             this.mobile.Name = "mobile";
             this.mobile.Size = new System.Drawing.Size(449, 20);
-            this.mobile.TabIndex = 5;
+            this.mobile.TabIndex = 6;
             // 
             // label5
             // 
@@ -159,7 +169,7 @@
             this.firstName.Location = new System.Drawing.Point(123, 19);
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(449, 20);
-            this.firstName.TabIndex = 3;
+            this.firstName.TabIndex = 4;
             // 
             // label4
             // 
@@ -175,7 +185,7 @@
             this.btnSend.Location = new System.Drawing.Point(738, 463);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 6;
+            this.btnSend.TabIndex = 8;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
@@ -203,7 +213,7 @@
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(449, 36);
-            this.description.TabIndex = 3;
+            this.description.TabIndex = 2;
             // 
             // label2
             // 
@@ -235,7 +245,7 @@
             this.tabStep2.Controls.Add(this.detailsLabel);
             this.tabStep2.Controls.Add(this.btnCancelDocument);
             this.tabStep2.Controls.Add(this.btnChangeDeadline);
-            this.tabStep2.Controls.Add(this.btnShowPDFbtnShowPDF);
+            this.tabStep2.Controls.Add(this.btnShowPDF);
             this.tabStep2.Location = new System.Drawing.Point(4, 22);
             this.tabStep2.Name = "tabStep2";
             this.tabStep2.Padding = new System.Windows.Forms.Padding(3);
@@ -244,23 +254,16 @@
             this.tabStep2.Text = "Step 2";
             this.tabStep2.UseVisualStyleBackColor = true;
             // 
-            // btnShowPDFbtnShowPDF
+            // detailsLabel
             // 
-            this.btnShowPDFbtnShowPDF.Location = new System.Drawing.Point(28, 454);
-            this.btnShowPDFbtnShowPDF.Name = "btnShowPDFbtnShowPDF";
-            this.btnShowPDFbtnShowPDF.Size = new System.Drawing.Size(109, 23);
-            this.btnShowPDFbtnShowPDF.TabIndex = 0;
-            this.btnShowPDFbtnShowPDF.Text = "Show PDF";
-            this.btnShowPDFbtnShowPDF.UseVisualStyleBackColor = true;
-            // 
-            // btnChangeDeadline
-            // 
-            this.btnChangeDeadline.Location = new System.Drawing.Point(194, 454);
-            this.btnChangeDeadline.Name = "btnChangeDeadline";
-            this.btnChangeDeadline.Size = new System.Drawing.Size(109, 23);
-            this.btnChangeDeadline.TabIndex = 1;
-            this.btnChangeDeadline.Text = "Change deadline";
-            this.btnChangeDeadline.UseVisualStyleBackColor = true;
+            this.detailsLabel.AutoSize = true;
+            this.detailsLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.detailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detailsLabel.Location = new System.Drawing.Point(3, 3);
+            this.detailsLabel.Name = "detailsLabel";
+            this.detailsLabel.Size = new System.Drawing.Size(0, 24);
+            this.detailsLabel.TabIndex = 3;
+            this.detailsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCancelDocument
             // 
@@ -271,32 +274,30 @@
             this.btnCancelDocument.TabIndex = 2;
             this.btnCancelDocument.Text = "Cancel document";
             this.btnCancelDocument.UseVisualStyleBackColor = true;
+            this.btnCancelDocument.Click += new System.EventHandler(this.btnCancelDocument_Click);
             // 
-            // detailsLabel
+            // btnChangeDeadline
             // 
-            this.detailsLabel.AutoSize = true;
-            this.detailsLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.detailsLabel.Location = new System.Drawing.Point(3, 3);
-            this.detailsLabel.Name = "detailsLabel";
-            this.detailsLabel.Size = new System.Drawing.Size(35, 13);
-            this.detailsLabel.TabIndex = 3;
-            this.detailsLabel.Text = "label8";
+            this.btnChangeDeadline.Location = new System.Drawing.Point(194, 454);
+            this.btnChangeDeadline.Name = "btnChangeDeadline";
+            this.btnChangeDeadline.Size = new System.Drawing.Size(109, 23);
+            this.btnChangeDeadline.TabIndex = 1;
+            this.btnChangeDeadline.Text = "Change deadline";
+            this.btnChangeDeadline.UseVisualStyleBackColor = true;
+            this.btnChangeDeadline.Click += new System.EventHandler(this.btnChangeDeadline_Click);
             // 
-            // chkSignDealine
+            // btnShowPDF
             // 
-            this.chkSignDealine.AutoSize = true;
-            this.chkSignDealine.Location = new System.Drawing.Point(135, 118);
-            this.chkSignDealine.Name = "chkSignDealine";
-            this.chkSignDealine.Size = new System.Drawing.Size(15, 14);
-            this.chkSignDealine.TabIndex = 8;
-            this.chkSignDealine.UseVisualStyleBackColor = true;
-            this.chkSignDealine.CheckedChanged += new System.EventHandler(this.chkSignDealine_CheckedChanged);
+            this.btnShowPDF.Enabled = false;
+            this.btnShowPDF.Location = new System.Drawing.Point(28, 454);
+            this.btnShowPDF.Name = "btnShowPDF";
+            this.btnShowPDF.Size = new System.Drawing.Size(109, 23);
+            this.btnShowPDF.TabIndex = 0;
+            this.btnShowPDF.Text = "Show PDF";
+            this.btnShowPDF.UseVisualStyleBackColor = true;
+            this.btnShowPDF.Click += new System.EventHandler(this.btnShowPDF_Click);
             // 
-            // backgroundWorker
-            // 
-
-            // 
-            // Form1
+            // AsyncSignForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -336,7 +337,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnShowPDFbtnShowPDF;
+        private System.Windows.Forms.Button btnShowPDF;
         private System.Windows.Forms.Label detailsLabel;
         private System.Windows.Forms.Button btnCancelDocument;
         private System.Windows.Forms.Button btnChangeDeadline;
