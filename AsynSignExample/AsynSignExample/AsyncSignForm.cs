@@ -7,7 +7,8 @@ namespace AsynSignExample
     public partial class AsyncSignForm : Form
     {
 
-        private Guid accountId = new Guid(ConfigurationManager.AppSettings["accountId"]);
+        private Guid accountId =string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["accountId"]) ? Guid.Empty:
+            new Guid(ConfigurationManager.AppSettings["accountId"]);
         private string apiKey = ConfigurationManager.AppSettings["apiKey"];
         private string eventConnectionString = ConfigurationManager.AppSettings["eventConnectionString"];
         private Guid documentid;
